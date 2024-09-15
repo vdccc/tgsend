@@ -1,0 +1,11 @@
+[Unit]
+Description=tgsend online message
+Wants=network-online.target
+After=network-online.target systemd-resolved.service
+
+[Service]
+Type=oneshot
+ExecStart=tgsend.sh online
+
+[Install]
+WantedBy=multi-user.target

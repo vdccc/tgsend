@@ -1,0 +1,11 @@
+[Unit]
+Description=tgsend offline message
+Wants=network-online.target
+Before=shutdown.target reboot.target poweroff.target
+
+[Service]
+Type=oneshot
+ExecStart=tgsend.sh offline
+
+[Install]
+WantedBy=poweroff.target reboot.target shutdown.target
