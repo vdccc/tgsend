@@ -13,20 +13,18 @@ send() {
 
 upload() {
   curl \
-    --progress-bar \
-    --verbose \
+    -# \
     -F chat_id="$RECEPIENT_ID" \
     -F document="@$1" \
-    "https://api.telegram.org/bot$TOKEN/sendDocument"
+    "https://api.telegram.org/bot$TOKEN/sendDocument" | cat
 }
 
 uploadVideo() {
   curl \
-    --progress-bar \
-    --verbose \
+    -# \
     -F chat_id="$RECEPIENT_ID" \
-    -F document="@$1" \
-    "https://api.telegram.org/bot$TOKEN/sendDocument"
+    -F video="@$1" \
+    "https://api.telegram.org/bot$TOKEN/sendVideo" | cat
 }
 
 hostname() {
