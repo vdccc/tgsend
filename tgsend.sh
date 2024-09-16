@@ -13,6 +13,8 @@ send() {
 
 upload() {
   curl \
+    --progress-bar \
+    --verbose \
     -F chat_id="$RECEPIENT_ID" \
     -F document="@$1" \
     "https://api.telegram.org/bot$TOKEN/sendDocument"
