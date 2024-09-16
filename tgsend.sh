@@ -20,6 +20,15 @@ upload() {
     "https://api.telegram.org/bot$TOKEN/sendDocument"
 }
 
+uploadVideo() {
+  curl \
+    --progress-bar \
+    --verbose \
+    -F chat_id="$RECEPIENT_ID" \
+    -F document="@$1" \
+    "https://api.telegram.org/bot$TOKEN/sendDocument"
+}
+
 hostname() {
   cat /etc/hostname
 }
@@ -71,6 +80,7 @@ case "$1" in
   online) online;;
   offline) offline;;
   upload) upload "${2:?empty filename}";;
+  upload-vid) uploadVideo "${2:?empty filename}";;
   -h) help;;
   *) help;;
 esac
