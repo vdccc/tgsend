@@ -7,8 +7,15 @@ send() {
   curl \
     -F chat_id="$RECEPIENT_ID" \
     -F parse_mode=MarkdownV2 \
-    -F "text=$1" \
+    -F text="$1" \
     "https://api.telegram.org/bot$TOKEN/sendMessage"
+}
+
+upload() {
+  curl \
+    -F chat_id="$RECEPIENT_ID" \
+    -F document="@$1" \
+    "https://api.telegram.org/bot$TOKEN/sendDocument"
 }
 
 hostname() {
@@ -61,6 +68,7 @@ case "$1" in
   msg) send_msg "${2:?empty arg}";;
   online) online;;
   offline) offline;;
+  upload) upload "${2:?empty filename}";;
   -h) help;;
   *) help;;
 esac
